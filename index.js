@@ -1,7 +1,5 @@
 const contacts = require("./contacts");
 
-contacts.getContactById(4);
-
 const { Command } = require("commander");
 const program = new Command();
 program
@@ -19,19 +17,19 @@ const argv = program.opts();
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      // ...
+      contacts.listContacts();
       break;
 
     case "get":
-      // ... id
+      contacts.getContactById(id);
       break;
 
     case "add":
-      // ... name email phone
+      contacts.addContact(name, email, phone);
       break;
 
     case "remove":
-      // ... id
+      contacts.removeContact(id);
       break;
 
     default:
@@ -39,4 +37,4 @@ function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-/* invokeAction(argv); */
+invokeAction(argv);
